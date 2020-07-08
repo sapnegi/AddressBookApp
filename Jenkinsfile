@@ -1,3 +1,11 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+
+  
 pipeline
 {
 	agent any
@@ -7,18 +15,31 @@ pipeline
 		{
 			steps
 			{
-				git 'https://github.com/sapnegi/AddressBookApp.git'
+				git 'https://github.com/iamdevopstrainer/DevOpsClassCodes'
 			}
 		}
 		
+		stage('Compile')
+		{
+			steps
+			{
+				sh '/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven361/bin/mvn compile'
+			}
+		}
+
+		stage('Test')
+		{
+			steps
+			{
+				sh '/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven361/bin/mvn test'
+			}
+		}
+
 		stage('Build')
 		{
 			steps
 			{
-				dir('')
-				{
-					sh '/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/myMaven/bin/mvn package'
-				}
+				sh '/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven361/bin/mvn package'
 			}
 		}
 		
@@ -26,11 +47,9 @@ pipeline
 		{
 			steps
 			{
-				script
-				{
-					echo "Deployment"
-					sh 'sudo cp /var/lib/jenkins/workspace/DemoJob1/target/addressbook.war /usr/share/tomcat/webapps/'
-				}
+				echo "Deployment"
+				sh 'sudo cp /var/lib/jenkins/workspace/AddressBookPipeline/target/addressbook.war /usr/share/tomcat/webapps/'
+				sh 'sudo systemctl restart tomcat'
 			}
 		}
 	}
