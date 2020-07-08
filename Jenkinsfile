@@ -23,7 +23,7 @@ pipeline
 		{
 			steps
 			{
-				sh '/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven361/bin/mvn compile'
+				sh '/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven_3.6.3/bin/mvn compile'
 			}
 		}
 
@@ -31,7 +31,7 @@ pipeline
 		{
 			steps
 			{
-				sh '/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven361/bin/mvn test'
+				sh '/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven_3.6.3/bin/mvn test'
 			}
 		}
 
@@ -39,7 +39,7 @@ pipeline
 		{
 			steps
 			{
-				sh '/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven361/bin/mvn package'
+				sh '/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven_3.6.3/bin/mvn package'
 			}
 		}
 		
