@@ -40,7 +40,7 @@ pipeline
 			steps
 			{
 				echo "Deployment"
-				sh 'cd /usr/share/tomcat/webapps/'
+				sh 'cd usr/share/tomcat/webapps/'
 			}
 		}
 	}
