@@ -40,8 +40,7 @@ pipeline
 			steps
 			{
 				echo "Deployment"
-				sh 'cd /usr/share/tomcat/webapps/'
-				sh 'cp /var/lib/jenkins/workspace/AddressBookPipeline/target/addressbook.war .'
+				sh 'sudo cp /var/lib/jenkins/workspace/AddressBookPipeline/target/addressbook.war /usr/share/tomcat/webapps/'
 				sh 'sudo systemctl restart tomcat'
 			}
 		}
